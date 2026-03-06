@@ -1,60 +1,60 @@
-// 1. CHỨC NĂNG TẠO ICON BAY LƠ LỬNG TRONG BACKGROUND
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLyTfUy4WKRYodSxjqeUlo81jXymwK2O8KLQ9y_9lebJ0hogewVek9ASqjIE8kfR-Xyg/exec";
+
+// Tạo hiệu ứng icon bay
 function createFloatingIcons() {
     const container = document.getElementById('animation-container');
+    if(!container) return;
     const icon = document.createElement('div');
-
-    // Đặt class để ăn CSS
-    icon.classList.add('bg-icon');
-
-    // Mảng các icon cute, nó sẽ lấy ngẫu nhiên
-    const icons = ['🤍', '🌸', '✨', '🩹'];
-    icon.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-
-    // Random vị trí xuất hiện (chiều ngang)
+    icon.style.position = 'absolute';
+    icon.style.color = '#ffd1dc';
+    icon.style.opacity = '0.6';
+    icon.innerHTML = ['🤍', '🌸', '✨', '🩹'][Math.floor(Math.random() * 4)];
     icon.style.left = Math.random() * 100 + 'vw';
-
-    // Random thời gian bay (từ 5 đến 9 giây)
-    icon.style.animationDuration = Math.random() * 4 + 5 + 's';
-
-    // Random kích thước icon
     icon.style.fontSize = Math.random() * 15 + 10 + 'px';
-
+    icon.style.animation = `floatUp ${Math.random() * 4 + 5}s linear forwards`;
     container.appendChild(icon);
-
-    // Tự động xóa icon sau khi bay xong để web không bị đơ
-    setTimeout(() => {
-        icon.remove();
-    }, 9000);
+    setTimeout(() => icon.remove(), 9000);
 }
-
-// Cứ mỗi 400 mili-giây sẽ tạo ra 1 icon mới
 setInterval(createFloatingIcons, 400);
 
-// 2. CHỨC NĂNG KHI BẤM NÚT "GỬI"
+// Xử lý gửi Form về Google Sheet
 document.getElementById('armor-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // Ngăn trang tự động load lại
-
+    e.preventDefault();
     const btn = document.querySelector('.btn-submit');
+    const originalText = btn.innerHTML;
 
-    // Đổi chữ và màu để người dùng biết đã bấm
-    btn.innerHTML = '✨ Đã gửi thành công! ✨';
-    btn.style.background = '#fff';
-    btn.style.color = '#ff85a2';
-    btn.style.border = '2px solid #ff85a2';
+    btn.innerHTML = '⏳ Đang gửi...';
+    btn.disabled = true;
 
-    // Tạo "pháo hoa" nhỏ bằng cách gọi hàm tạo icon liên tục
-    for(let i = 0; i < 15; i++) {
-        setTimeout(createFloatingIcons, i * 100);
-    }
+    const formData = new FormData(this);
+    const queryString = new URLSearchParams(formData).toString();
 
-    // Sau 3 giây, nút bấm quay lại trạng thái ban đầu
-    setTimeout(() => {
-        btn.innerHTML = '🤍 Gửi';
-        btn.style.background = 'linear-gradient(45deg, var(--primary-pink), #ff9eb5)';
-        btn.style.color = 'white';
-        btn.style.border = 'none';
+    // Gửi dữ liệu bằng phương thức POST đến link Google Script
+    fetch(`${SCRIPT_URL}?${queryString}`, { method: 'POST' })
+        .then(() => {
+            btn.innerHTML = '✨ Đã gửi thành công! ✨';
+            btn.style.background = '#fff';
+            btn.style.color = '#ff85a2';
+            btn.style.border = '2px solid #ff85a2';
 
-        // Xóa nội dung form
-        document.getElementById('armor-form').reset();
-    }, 3000);
+            // Pháo hoa ăn mừng
+            for(let i = 0; i < 20; i++) {
+                setTimeout(createFloatingIcons, i * 100);
+            }
+
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.style.background = 'linear-gradient(45deg, var(--primary-pink), #ff9eb5)';
+                btn.style.color = 'white';
+                btn.style.border = 'none';
+                this.reset();
+            }, 4000);
+        })
+        .catch(error => {
+            console.error('Lỗi:', error);
+            alert("Có lỗi khi gửi dữ liệu. Bạn hãy kiểm tra lại mạng nhé!");
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
 });
