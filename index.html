@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A R M O R - Nơi Lắng Nghe Bạn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Pangolin&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="animation-container"></div>
+
+    <header class="fade-in">
+        <div class="logo">
+            <span class="logo-shield pulse-anim">🛡️</span>
+            A R M O R
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="left-col slide-in-left">
+
+            <div class="card hover-float">
+                <h3>Người liên quan</h3>
+                <ul class="people-list">
+                    <li><input type="text" placeholder="GVCN" class="person-input"></li>
+                    <li><input type="text" placeholder="Người bắt nạt bạn" class="person-input"></li>
+                    <li><input type="text" placeholder="Người khác (nếu có)..." class="person-input"></li>
+                </ul>
+            </div>
+
+            <div class="cute-drawing hover-float">
+                <div class="speech-bubble float-anim">We're here to listen</div>
+                <svg class="cute-img doodle-svg" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="140" cy="65" r="22" fill="none" stroke="var(--text-main)" stroke-width="4"/>
+                    <path d="M 140 87 C 150 120, 160 140, 175 150 M 140 87 C 130 120, 120 140, 105 150" fill="none" stroke="var(--text-main)" stroke-width="4"/>
+                    <circle cx="132" cy="60" r="3" fill="var(--text-main)"/>
+                    <circle cx="148" cy="60" r="3" fill="var(--text-main)"/>
+                    <path d="M 132 70 Q 140 80 148 70" fill="none" stroke="var(--text-main)" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="65" cy="85" r="20" fill="none" stroke="var(--text-main)" stroke-width="4"/>
+                    <path d="M 65 105 C 70 130, 80 145, 95 150 M 65 105 C 60 130, 50 145, 35 150" fill="none" stroke="var(--text-main)" stroke-width="4"/>
+                    <circle cx="58" cy="82" r="2.5" fill="var(--text-main)"/>
+                    <circle cx="72" cy="82" r="2.5" fill="var(--text-main)"/>
+                    <path d="M 120 85 Q 90 50 65 65" fill="none" stroke="var(--text-main)" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M 50 50 Q 65 40 80 50" fill="none" stroke="var(--primary-pink)" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <div class="cute-drawing hover-float">
+                <p class="cute-text" style="color: var(--text-main);">Không cần ngại ngần</p>
+                <svg class="cute-img doodle-svg" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 45 90 C 35 55, 65 40, 100 40 C 135 40, 165 55, 155 90 C 145 125, 55 125, 45 90 Z" fill="none" stroke="var(--text-main)" stroke-width="4"/>
+                    <path d="M 55 45 L 45 20 L 80 40 M 145 45 L 155 20 L 120 40" fill="none" stroke="var(--text-main)" stroke-width="4" stroke-linejoin="round"/>
+                    <ellipse cx="75" cy="75" rx="12" ry="16" fill="none" stroke="var(--text-main)" stroke-width="4"/>
+                    <ellipse cx="125" cy="75" rx="12" ry="16" fill="none" stroke="var(--text-main)" stroke-width="4"/>
+                    <circle cx="75" cy="78" r="6" fill="var(--text-main)"/>
+                    <circle cx="125" cy="78" r="6" fill="var(--text-main)"/>
+                    <line x1="50" y1="90" x2="60" y2="85" stroke="var(--primary-pink)" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="55" y1="95" x2="65" y2="90" stroke="var(--primary-pink)" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="140" y1="85" x2="150" y2="90" stroke="var(--primary-pink)" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="135" y1="90" x2="145" y2="95" stroke="var(--primary-pink)" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M 70 125 C 80 110, 95 110, 98 120 M 130 125 C 120 110, 105 110, 102 120" fill="none" stroke="var(--text-main)" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="right-col slide-in-right">
+            <h2>Miêu tả chi tiết:</h2>
+            <form id="armor-form">
+
+                <div class="form-group severity-group">
+                    <label>Mức độ sự việc của bạn hiện tại?</label>
+                    <div class="radio-options">
+                        <label class="radio-card">
+                            <input type="radio" name="severity" value="khan-cap" required>
+                            <div class="card-content">
+                                <span class="icon">🚨</span>
+                                <div class="text">
+                                    <strong>Trường hợp khẩn cấp</strong>
+                                    <small>Cần can thiệp ngay để bảo đảm an toàn</small>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="severity" value="nghiem-trong">
+                            <div class="card-content">
+                                <span class="icon">⚠️</span>
+                                <div class="text">
+                                    <strong>Trường hợp nghiêm trọng</strong>
+                                    <small>Sẽ được xác minh trong vòng 24 giờ</small>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="severity" value="ho-tro-tam-ly">
+                            <div class="card-content">
+                                <span class="icon">💖</span>
+                                <div class="text">
+                                    <strong>Cần hỗ trợ tâm lý</strong>
+                                    <small>Sẽ được tư vấn, hòa giải và đồng hành</small>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>1. Bạn đã gặp phải những điều gì?</label>
+                    <textarea rows="3" placeholder="Hãy viết ra đây nhé..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>2. Bạn cảm thấy mình có bị những vấn đề về tâm lý không?</label>
+                    <textarea rows="3" placeholder="Đừng ngại chia sẻ..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>3. Gia đình có biết không?</label>
+                    <textarea rows="3" placeholder="Gia đình bạn phản ứng thế nào..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>4. Bạn có thấy lo sợ về điều gì nữa không?</label>
+                    <textarea rows="3" placeholder="Viết ra những nỗi sợ sẽ giúp bạn nhẹ nhõm hơn..."></textarea>
+                </div>
+
+                <div class="form-footer">
+                    <div class="truth-text">
+                        Hãy mạnh mẽ đối diện với<br>
+                        <strong>"TRUTH"</strong>
+                    </div>
+                    <div class="submit-area">
+                        <p>Hãy dũng cảm lên bạn nhé !!</p>
+                        <button type="submit" class="btn-submit pulse-btn">🤍 Gửi</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="school-info">THCS Lê Văn Hưu, Xã Nhà Bè, TP.HCM</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
