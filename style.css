@@ -101,7 +101,6 @@ header {
 .card-content .text strong { color: var(--text-main); font-size: 1.05rem; font-family: 'Nunito', sans-serif; }
 .card-content .text small { color: #888; font-size: 0.8rem; margin-top: 2px; }
 
-/* PHẦN FOOTER FORM & NÚT GỬI */
 .form-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px dashed var(--soft-pink); }
 .truth-text { font-family: 'Pangolin', cursive; font-size: 1.5rem; line-height: 1.4; }
 .truth-text strong { color: var(--primary-pink); font-size: 2rem; text-transform: uppercase; letter-spacing: 2px; }

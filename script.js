@@ -1,6 +1,5 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLyTfUy4WKRYodSxjqeUlo81jXymwK2O8KLQ9y_9lebJ0hogewVek9ASqjIE8kfR-Xyg/exec";
 
-// Tạo hiệu ứng icon bay
 function createFloatingIcons() {
     const container = document.getElementById('animation-container');
     if(!container) return;
@@ -17,7 +16,6 @@ function createFloatingIcons() {
 }
 setInterval(createFloatingIcons, 400);
 
-// Xử lý gửi Form về Google Sheet
 document.getElementById('armor-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = document.querySelector('.btn-submit');
@@ -28,8 +26,6 @@ document.getElementById('armor-form').addEventListener('submit', function(e) {
 
     const formData = new FormData(this);
     const queryString = new URLSearchParams(formData).toString();
-
-    // Gửi dữ liệu bằng phương thức POST đến link Google Script
     fetch(`${SCRIPT_URL}?${queryString}`, { method: 'POST' })
         .then(() => {
             btn.innerHTML = '✨ Đã gửi thành công! ✨';
