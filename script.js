@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLyTfUy4WKRYodSxjqeUlo81jXymwK2O8KLQ9y_9lebJ0hogewVek9ASqjIE8kfR-Xyg/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxraYp12kmN_bbv5-2PImiP0psOmvHs_rppZLLsCmRrZxPuLUKZjVSDAzjYjFWjVMxe/exec";
 
 function createFloatingIcons() {
     const container = document.getElementById('animation-container');
