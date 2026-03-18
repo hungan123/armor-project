@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxraYp12kmN_bbv5-2PImiP0psOmvHs_rppZLLsCmRrZxPuLUKZjVSDAzjYjFWjVMxe/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw035xI-8WPiYQ-cHrwEclugkhIKTsQTbekyri-d2nBMT93VKZuIXcEs2eqpsZKhcGweQ/exec";
 
 function createFloatingIcons() {
     const container = document.getElementById('animation-container');
@@ -24,10 +24,8 @@ document.getElementById('armor-form').addEventListener('submit', function(e) {
     btn.innerHTML = '⏳ Đang gửi...';
     btn.disabled = true;
 
-    // Lấy dữ liệu (Bao gồm cả các ô có thuộc tính form="armor-form" ở cột trái)
     const formData = new FormData(this);
     const queryString = new URLSearchParams(formData).toString();
-
     fetch(`${SCRIPT_URL}?${queryString}`, { method: 'POST' })
         .then(() => {
             btn.innerHTML = '✨ Đã gửi thành công! ✨';
@@ -40,24 +38,13 @@ document.getElementById('armor-form').addEventListener('submit', function(e) {
                 setTimeout(createFloatingIcons, i * 100);
             }
 
-            // MỚI: Hiện Popup phản hồi yêu thương sau 0.5s
-            setTimeout(() => {
-                document.getElementById('success-popup').classList.add('show');
-            }, 500);
-
-            // MỚI: Reset lại Form sau khi gửi xong
             setTimeout(() => {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
                 btn.style.background = 'linear-gradient(45deg, var(--primary-pink), #ff9eb5)';
                 btn.style.color = 'white';
                 btn.style.border = 'none';
-
-                // Reset form bên phải
-                document.getElementById('armor-form').reset();
-
-                // Reset thủ công các ô bên cột trái (vì nó nằm ngoài form)
-                document.querySelectorAll('input[form="armor-form"]').forEach(input => input.value = '');
+                this.reset();
             }, 4000);
         })
         .catch(error => {
@@ -66,9 +53,4 @@ document.getElementById('armor-form').addEventListener('submit', function(e) {
             btn.innerHTML = originalText;
             btn.disabled = false;
         });
-});
-
-// Tắt popup khi bấm "Mình biết rồi"
-document.getElementById('close-popup').addEventListener('click', function() {
-    document.getElementById('success-popup').classList.remove('show');
 });
